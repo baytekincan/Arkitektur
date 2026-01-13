@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkitektur.Entity", "Arkitektur.Entity\Arkitektur.Entity.csproj", "{D342899A-63D3-4998-8FF7-7FDDB748DBE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arkitektur.DataAccess", "Arkitekture.DataAccess\Arkitektur.DataAccess.csproj", "{7DEC9491-5CE0-4964-8935-318842363431}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D342899A-63D3-4998-8FF7-7FDDB748DBE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D342899A-63D3-4998-8FF7-7FDDB748DBE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D342899A-63D3-4998-8FF7-7FDDB748DBE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D342899A-63D3-4998-8FF7-7FDDB748DBE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEC9491-5CE0-4964-8935-318842363431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEC9491-5CE0-4964-8935-318842363431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEC9491-5CE0-4964-8935-318842363431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEC9491-5CE0-4964-8935-318842363431}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B64513F4-4A42-4603-B13C-D1A6E6AE265C}
+	EndGlobalSection
+EndGlobal
