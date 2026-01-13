@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="9.0.0-pre01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Arkitekture.DataAccess\Arkitektur.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
