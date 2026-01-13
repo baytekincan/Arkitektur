@@ -1,6 +1,8 @@
-﻿namespace Arkitektur.Entity.Entities
+﻿using Arkitektur.Entity.Entities.Common;
+
+namespace Arkitektur.Entity.Entities
 {
-    public class TeamSocial
+    public class TeamSocial : BaseEntity
     {
         public string Title { get; set; }
         public string Icon { get; set; }
