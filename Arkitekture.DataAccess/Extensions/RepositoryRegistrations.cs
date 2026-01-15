@@ -18,6 +18,12 @@ namespace Arkitektur.DataAccess.Extensions
                 options.AddInterceptors(new AuditDbContextInterceptor());
             });
 
+            services.Scan(opt => opt
+            .FromAssemblyOf<DataAccessAssembly>()
+            .AddClasses(x => x.Where(t => t.Name.EndsWith("Repository")))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 

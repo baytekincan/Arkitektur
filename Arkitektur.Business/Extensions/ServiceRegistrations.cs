@@ -1,5 +1,6 @@
-﻿using Arkitektur.Business.Services.AboutServices;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Arkitektur.Business.Extensions
 {
@@ -7,9 +8,15 @@ namespace Arkitektur.Business.Extensions
     {
         public static IServiceCollection AddServicesExtension(this IServiceCollection services)
         {
-            services.AddScoped<IAboutService, AboutService>();
+
+            services.Scan(opt => opt
+            .FromAssemblyOf<BusinessAssembly>()
+            .AddClasses(x => x.Where(t => t.Name.EndsWith("Service")))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             return services;
         }
-
     }
 }

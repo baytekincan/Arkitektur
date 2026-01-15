@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using FluentValidation.Results;
+using System.Text.Json.Serialization;
 
 namespace Arkitektur.Business.Base
 {
@@ -30,6 +31,16 @@ namespace Arkitektur.Business.Base
                 Errors = new[] { new { ErrorMessage = errorMessage } }
             };
         }
+        public static BaseResult<T> Fail(IEnumerable<ValidationFailure> errorMessage)
+        {
+            IEnumerable<object> errors = (from error in errorMessage
+                                          select new
+                                          {
+                                              PropertyName = error.PropertyName,
+                                              ErrorMessage = error.ErrorMessage
+                                          }).ToList();
 
+            return new BaseResult<T> { Errors = errors };
+        }
     }
 }
