@@ -1,5 +1,3 @@
-﻿using Arkitektur.Business.DTOs.ProjectDtos;
+﻿namespace Arkitektur.Business.DTOs.CategoryDtos;
 
-namespace Arkitektur.Business.DTOs.CategoryDtos;
-
-public record ResultCategoryDto(int Id, string CategoryName, IList<ResultProjectDto> Projects);
+public record ResultCategoryDto(int Id, string CategoryName);

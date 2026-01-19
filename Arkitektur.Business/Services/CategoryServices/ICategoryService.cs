@@ -6,6 +6,7 @@ namespace Arkitektur.Business.Services.CategoryServices;
 public interface ICategoryService
 {
     Task<BaseResult<List<ResultCategoryDto>>> GetAllAsync();
+    Task<BaseResult<List<ResultCategoriesWithProjectsDto>>> GetCategoriesWithProjectsAsync();
     Task<BaseResult<ResultCategoryDto>> GetByIdAsync(int id);
     Task<BaseResult<object>> CreateAsync(CreateCategoryDto createCategoryDto);
     Task<BaseResult<object>> DeleteAsync(int id);

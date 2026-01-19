@@ -28,7 +28,7 @@ namespace Arkitektur.DataAccess.Repositories
             return await _table.AsNoTracking().ToListAsync();
         }
 
-        public IQueryable<TEntity> GetQuaryable()
+        public IQueryable<TEntity> GetQueryable()
         {
             return _table;
         }

@@ -1,4 +1,6 @@
-﻿namespace Arkitektur.Business.DTOs.ProjectDtos;
+﻿using Arkitektur.Business.DTOs.CategoryDtos;
+
+namespace Arkitektur.Business.DTOs.ProjectDtos;
 
 public record ResultProjectDto(int Id, string ImageUrl,
                                string Title,
@@ -6,4 +8,5 @@ public record ResultProjectDto(int Id, string ImageUrl,
                                string Item1,
                                string Item2,
                                string Item3,
-                               int CategoryId);
+                               int CategoryId,
+                               ResultCategoryDto Category);

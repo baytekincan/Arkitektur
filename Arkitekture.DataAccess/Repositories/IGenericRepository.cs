@@ -10,6 +10,6 @@ namespace Arkitektur.DataAccess.Repositories
         Task<List<TEntity>> GetListAsync();
         Task<TEntity> GetByIdAsync(int id);
 
-        IQueryable<TEntity> GetQuaryable();
+        IQueryable<TEntity> GetQueryable();
     }
 }

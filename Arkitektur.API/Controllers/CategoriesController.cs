@@ -43,4 +43,11 @@ public class CategoriesController(ICategoryService service) : ControllerBase
         var response = await service.DeleteAsync(id);
         return response.IsSuccessful ? Ok() : BadRequest(response);
     }
+
+    [HttpGet("WithProjects")]
+    public async Task<ActionResult<ResultCategoriesWithProjectsDto>> GetCategoriesWithProjects()
+    {
+        var response = await service.GetCategoriesWithProjectsAsync();
+        return response.IsSuccessful ? Ok(response) : BadRequest(response);
+    }
 }
