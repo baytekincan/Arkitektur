@@ -1,11 +1,10 @@
-﻿namespace Arkitektur.Business.DTOs.AboutDtos
+﻿namespace Arkitektur.Business.DTOs.AboutDtos;
+
+public class UpdateAboutDto
 {
-    public class UpdateAboutDto
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int StartYear { get; set; }
-        public string ImageUrl { get; set; }
-    }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public int StartYear { get; set; }
+    public string ImageUrl { get; set; }
 }

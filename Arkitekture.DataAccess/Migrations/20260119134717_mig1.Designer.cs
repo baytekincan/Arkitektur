@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Arkitektur.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260113160802_mig_initial")]
-    partial class mig_initial
+    [Migration("20260119134717_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
