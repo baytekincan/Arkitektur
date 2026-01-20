@@ -12,6 +12,7 @@
     <PackageReference Include="FluentValidation" Version="9.0.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.1" />
     <PackageReference Include="Mapster" Version="9.0.0-pre01" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.9" />
   </ItemGroup>
 
   <ItemGroup>
