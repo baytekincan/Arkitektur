@@ -23,17 +23,17 @@ namespace Arkitektur.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateChooseDto ChooseDto)
+        public async Task<IActionResult> Create(CreateChooseDto chooseDto)
         {
-            var response = await service.CreateAsync(ChooseDto);
+            var response = await service.CreateAsync(chooseDto);
             return response.IsSuccessful ? Ok(response) : BadRequest(response);
 
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateChooseDto ChooseDto)
+        public async Task<IActionResult> Update(UpdateChooseDto chooseDto)
         {
-            var response = await service.UpdateAsync(ChooseDto);
+            var response = await service.UpdateAsync(chooseDto);
             return response.IsSuccessful ? Ok() : BadRequest(response);
         }
 
