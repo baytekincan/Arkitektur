@@ -1,34 +1,38 @@
-# Arkitektur
+# 🏗️ Arkitektur
 
-.NET 9 backend service designed for architecture-focused applications.
-Built with a **layered architecture** and **common design patterns**, Arkitektur serves as a scalable backend for individuals and organizations in the architecture domain.
+A modern .NET 9 backend service designed for architecture-focused applications.
 
----
-
-## 🛠 Tech Stack & Libraries
-
-| Category             | Tools / Libraries                  |
-| -------------------- | ---------------------------------- |
-| Backend              | C#, .NET 9                         |
-| Data Access          | Entity Framework Core (Code-First) |
-| Validation           | FluentValidation                   |
-| Object Mapping       | Mapster                            |
-| Dependency Injection | Built-in DI, Scrutor               |
-| Storage              | AWS S3                             |
-| Authentication       | JWT *(planned)*                    |
+Built with **layered architecture** and **clean design principles**, Arkitektur offers a scalable, maintainable, and production-ready backend solution for architecture-related platforms.
 
 ---
 
-## 📦 Key Features
+## 🚀 Features
 
-- Layered architecture (**API / Business / Entity / DataAccess**)
-- Centralized business logic in the Business layer
-- Repository & Unit of Work patterns
-- Consistent API responses with **Result / Result<T>**
-- Request validation using **FluentValidation**
-- Automatic dependency registration with **Scrutor**
-- AWS S3–based image storage
-- API documentation via **Scalar**
+- Layered Architecture
+- Repository and Unit of Work patterns
+- Clean separation of concerns
+- JWT Authentication & Authorization
+- Role and User management
+- FluentValidation integration
+- AWS S3 image upload support
+- Centralized response model
+- Automatic dependency injection with Scrutor
+- API documentation with Scalar (OpenAPI)
+
+---
+
+## 🛠 Tech Stack
+
+| Category       | Technology                        |
+|----------------|-----------------------------------|
+| Backend        | C#, .NET 9                        |
+| ORM            | Entity Framework Core             |
+| Validation     | FluentValidation                  |
+| Mapping        | Mapster                           |
+| DI             | Built-in DI + Scrutor             |
+| Storage        | AWS S3                            |
+| Auth           | JWT                               |
+| Database       | SQL Server                        |
 
 ---
 
@@ -46,6 +50,7 @@ Arkitektur
 │   ├── Base               # Result pattern & base DTO definitions
 │   ├── DTOs               # Request / Response data models
 │   ├── Extensions         # Dependency injection & helper extensions
+│   ├── Options            # JWT 
 │   ├── Services           # Business logic & use case implementations
 │   └── Validators         # FluentValidation rules
 │
@@ -63,147 +68,146 @@ Arkitektur
 
 ```
 
----
+## 🔐 Authentication
 
-## 🔌 API Endpoints
+JWT-based authentication is implemented.
 
-### 📁 Projects
+### Endpoints
 
-| Method | Endpoint                       | Description                        |
-| ------ | ------------------------------ | ---------------------------------- |
-| GET    | `/api/Projects`                | Get all projects                   |
-| GET    | `/api/Projects/{id}`           | Get project by id                  |
-| GET    | `/api/Projects/WithCategories` | Get projects with category details |
-| POST   | `/api/Projects`                | Create a new project               |
-| PUT    | `/api/Projects`                | Update an existing project         |
-| DELETE | `/api/Projects/{id}`           | Delete a project                   |
-
-**POST / PUT Request Body**
-
-```json
-{
-  "imageUrl": "string",
-  "title": "string",
-  "description": "string",
-  "item1": "string",
-  "item2": "string",
-  "item3": "string",
-  "categoryId": 1
-}
-```
-
-**Required:** `imageUrl`, `title`, `description`, `item1`, `item2`, `item3`, `categoryId`
+| Method | Endpoint                | Description                  |
+|--------|-------------------------|------------------------------|
+| POST   | `/api/Users/register`   | Register a new user          |
+| POST   | `/api/Users/login`      | Login and receive JWT token  |
 
 ---
 
-### 🗂 Categories
+## 👤 Roles & Authorization
 
-| Method | Endpoint                       | Description                          |
-| ------ | ------------------------------ | ------------------------------------ |
-| GET    | `/api/Categories`              | Get all categories                   |
-| GET    | `/api/Categories/{id}`         | Get category by id                   |
-| GET    | `/api/Categories/WithProjects` | Get categories with related projects |
-| POST   | `/api/Categories`              | Create a new category                |
-| PUT    | `/api/Categories`              | Update an existing category          |
-| DELETE | `/api/Categories/{id}`         | Delete a category                    |
-
-**POST / PUT Request Body**
-
-```json
-{
-  "categoryName": "string"
-}
-```
-
-**Required:** `categoryName`
+| Method | Endpoint                      | Description                    |
+|--------|-------------------------------|--------------------------------|
+| GET    | `/api/Roles`                  | Get all roles                  |
+| POST   | `/api/Roles/CreateRole`       | Create a new role              |
+| GET    | `/api/RoleAssings/{userId}`   | Get roles for a specific user  |
+| POST   | `/api/RoleAssings`            | Assign roles to a user         |
 
 ---
 
-### 📅 Appointments
+## 📁 Projects
 
-| Method | Endpoint                 | Description                    |
-| ------ | ------------------------ | ------------------------------ |
-| GET    | `/api/Appointments`      | Get all appointments           |
-| GET    | `/api/Appointments/{id}` | Get appointment by id          |
-| POST   | `/api/Appointments`      | Create a new appointment       |
-| PUT    | `/api/Appointments`      | Update an existing appointment |
-| DELETE | `/api/Appointments/{id}` | Delete an appointment          |
-
-**POST Request Body**
-
-```json
-{
-  "nameSurname": "string",
-  "email": "string",
-  "appointmentDate": "2025-01-01T10:00:00Z",
-  "phoneNumber": "string",
-  "serviceName": "string",
-  "message": "string"
-}
-```
-
-**Required:** `nameSurname`, `email`, `appointmentDate`, `phoneNumber`, `serviceName`, `message`
+| Method | Endpoint                        | Description                        |
+|--------|---------------------------------|------------------------------------|
+| GET    | `/api/Projects`                 | Get all projects                   |
+| GET    | `/api/Projects/{id}`            | Get project by ID                  |
+| GET    | `/api/Projects/WithCategories`  | Get projects with category details |
+| POST   | `/api/Projects`                 | Create a new project               |
+| PUT    | `/api/Projects`                 | Update project                     |
+| DELETE | `/api/Projects/{id}`            | Delete project                     |
 
 ---
 
-### 🖼 Images (AWS S3)
+## 🗂 Categories
 
-| Method | Endpoint             | Description            |
-| ------ | -------------------- | ---------------------- |
-| POST   | `/api/Images/upload` | Upload image to AWS S3 |
-
-**Request Type:** `multipart/form-data`
-
-| Field | Type | Required |
-| ----- | ---- | -------- |
-| file  | File | ✅        |
+| Method | Endpoint                       | Description                    |
+|--------|--------------------------------|--------------------------------|
+| GET    | `/api/Categories`              | Get all categories             |
+| GET    | `/api/Categories/{id}`         | Get category by ID             |
+| GET    | `/api/Categories/WithProjects` | Get categories with projects   |
+| POST   | `/api/Categories`              | Create a new category          |
+| PUT    | `/api/Categories`              | Update category                |
+| DELETE | `/api/Categories/{id}`         | Delete category                |
 
 ---
 
-### 📌 Other Endpoints
+## 📅 Appointments
 
-Additional resources are available.
-Please explore the API documentation for the full list of endpoints.
+| Method | Endpoint                    | Description           |
+|--------|-----------------------------|-----------------------|
+| GET    | `/api/Appointments`         | Get all appointments  |
+| GET    | `/api/Appointments/{id}`    | Get appointment by ID |
+| POST   | `/api/Appointments`         | Create appointment    |
+| PUT    | `/api/Appointments`         | Update appointment    |
+| DELETE | `/api/Appointments/{id}`    | Delete appointment    |
+
+---
+
+## 🧾 Other Entities
+
+The following entities have full CRUD operations:
+
+- **About**
+- **Banners**
+- **Features**
+- **Chooses**
+- **Contacts**
+
+**Example Endpoints:**
+- `GET /api/Abouts`
+- `GET /api/Banners`
+- `GET /api/Features`
+- `GET /api/Chooses`
+- `GET /api/Contacts`
+
+---
+
+## 🖼 Image Upload (AWS S3)
+
+| Method | Endpoint             |
+|--------|----------------------|
+| POST   | `/api/Images/upload` |
+
+- **Content Type:** `multipart/form-data`
+- **Field Name:** `file`
+
+---
+
+## 📦 Response Structure
+
+All API responses follow a standardized format:
+
+    {
+      "success": true,
+      "data": {},
+      "message": "string"
+    }
 
 ---
 
 ## 📖 API Documentation
 
-* **Scalar UI**:
-  `https://localhost:7083/scalar/`
+You can explore and test the API using Scalar UI:
+
+👉 https://localhost:7083/scalar/
 
 ---
 
 ## ⚙️ Installation
 
-### Prerequisites
+### 📋 Prerequisites
 
-* .NET 9 SDK
-* SQL Server
-* AWS S3 bucket and credentials
-
----
-
-### Setup Steps
-
-```bash
-git clone https://github.com/baytekincan/Arkitektur.git
-cd Arkitektur
-dotnet restore
-dotnet ef database update
-dotnet run
-```
-
-The API will be available at:
-
-```text
-https://localhost:7083
-```
+- .NET 9 SDK  
+- SQL Server  
+- AWS S3 Bucket (Access Key & Secret Key)
 
 ---
 
-## 🔐 Authentication
+### 🚀 Setup
 
-JWT-based authentication is **planned** and will be integrated in future versions.
+    git clone https://github.com/baytekincan/Arkitektur.git
+    cd Arkitektur
+    dotnet restore
+    dotnet ef database update
+    dotnet run
 
 ---
+
+## 🌐 Base URL
+
+    https://localhost:7083
+
+---
+## 👨‍💻 Author
+
+**Can Baytekin**
+
+[![GitHub](https://img.shields.io/badge/GitHub-baytekincan-181717?style=flat&logo=github&logoColor=white)](https://github.com/baytekincan)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-baytekincan-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/baytekincan)
